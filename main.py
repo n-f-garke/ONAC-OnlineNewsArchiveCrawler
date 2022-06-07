@@ -160,7 +160,9 @@ def parse_archive(news_medium: NewsMedium,
             parsed_url = parsed_url._replace(query="")
             parsed_url = parsed_url._replace(fragment="")
             url = parsed_url.geturl()
-            archive_page_content["content"].urls_in_archive.append(url)
+
+            if url not in archive_page_content["content"].urls_in_archive:
+                archive_page_content["content"].urls_in_archive.append(url)
 
     # --------------------------------------------------------------------------------------------------------------
     # The article urls are filtered. Every url that appeared more than once is filtered.
@@ -303,5 +305,5 @@ if __name__ == '__main__':
     date1_string = date1.strftime(nge_datetime.date.ISO_8601_format)
     date2_string = date2.strftime(nge_datetime.date.ISO_8601_format)
     csv_file_name = "onac_collection-%s_from_%s_to_%s.csv" % (news_medium_name, date1_string, date2_string)
-    csv_file_path = "~/collections/%s" % csv_file_name
+    csv_file_path = "collections/%s" % csv_file_name
     store_articles_to_csv_file(parsed_news_articles, csv_file_path)
