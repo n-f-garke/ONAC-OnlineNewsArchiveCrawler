@@ -1,7 +1,8 @@
 import time
 import datetime
 
-ISO_8601_format: str = "%Y-%m-%dT%H:%M:%S%z"
+ISO_8601_format_DT: str = "%Y-%m-%dT%H:%M:%S%z"
+ISO_8601_format_D: str = "%Y-%m-%d"
 
 
 def get_dates_between(date_1: datetime.date,

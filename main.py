@@ -75,8 +75,8 @@ def parse_archive(news_medium: NewsMedium,
     def print_parameters():
         print("__ retrieve archive __________  ")
         print("____ publisher _______________: " + news_medium.__str__())
-        print("____ start_of_period _________: " + start_of_period.strftime(nge_datetime.date.ISO_8601_format))
-        print("____ end_of_period ___________: " + end_of_period.strftime(nge_datetime.date.ISO_8601_format))
+        print("____ start_of_period _________: " + start_of_period.strftime(nge_datetime.date.ISO_8601_format_DT))
+        print("____ end_of_period ___________: " + end_of_period.strftime(nge_datetime.date.ISO_8601_format_DT))
         print("____ min_secs_before_request _: " + str(min_secs_before_request))
         print("____ max_secs_before_request _: " + str(max_secs_before_request))
         print("______________________________ ")
@@ -121,7 +121,7 @@ def parse_archive(news_medium: NewsMedium,
     for date_to_parse in dates_to_parse:
         archive_page = ArchivePage(
             time.strftime(news_medium.archive_page_location, date_to_parse.timetuple()),
-            time.strftime(nge_datetime.date.ISO_8601_format, date_to_parse.timetuple()),
+            time.strftime(nge_datetime.date.ISO_8601_format_DT, date_to_parse.timetuple()),
             [],
         )
         archive.archive_pages.append(archive_page)
@@ -302,8 +302,8 @@ if __name__ == '__main__':
     # STORE NEWS ARTICLES TO CSV FILE
     # --------------------------------------------------------------------------------------------------------------
 
-    date1_string = date1.strftime(nge_datetime.date.ISO_8601_format)
-    date2_string = date2.strftime(nge_datetime.date.ISO_8601_format)
+    date1_string = date1.strftime(nge_datetime.date.ISO_8601_format_D)
+    date2_string = date2.strftime(nge_datetime.date.ISO_8601_format_D)
     csv_file_name = "onac_collection-%s_from_%s_to_%s.csv" % (news_medium_name, date1_string, date2_string)
     csv_file_path = "collections/%s" % csv_file_name
     store_articles_to_csv_file(parsed_news_articles, csv_file_path)
